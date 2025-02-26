@@ -1,0 +1,99 @@
+.navbar {
+    background-color: white !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+text-decoration: none;
+}
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .link {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .link:hover {
+    color: gray;
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .icon {
+    font-size: 18px;
+    color: black;
+  }
+  
+  .loginButton {
+    background-color: black !important;
+    color: white !important;
+    padding: 6px 20px !important;
+    border-radius: 5px !important;
+  }
+  
+  .loginButton:hover {
+    background-color: gray !important;
+  }
+  
+  /* Mega Menu */
+  .megaMenu {
+    margin-top: 10px;
+  }
+  
+  .megaContainer {
+    display: flex;
+    background: white;
+    padding: 20px;
+    gap: 30px;
+  }
+  
+  .megaContainer div {
+    min-width: 150px;
+  }
+  
+  .megaContainer h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .megaContainer .MuiMenuItem-root {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .link {
+    color: black !important;  /* Ensures black color */
+    text-decoration: none !important; /* Removes underline */
+    font-weight: 500; /* Optional: Adds better visibility */
+  }
+  
+  .link:hover {
+    color: #555; /* Optional: Slightly darkens on hover */
+  }
+  
+  
