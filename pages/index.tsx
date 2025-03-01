@@ -64,7 +64,6 @@ const Home: React.FC<Props> = ({ products }) => {
       <Grid container spacing={3} justifyContent="center">
         {products.map((product) => (
           <Grid item key={product.id} xs={12} sm={6} md={4}>
-
             <Card className="product-card">
               <CardMedia className="card-image" component="img" image={product.image} alt={product.title} />
               <CardContent>
