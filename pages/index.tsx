@@ -18,14 +18,15 @@ const Home: React.FC<Props> = ({ products }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (products.length === 0) return; // Prevent crash if no products
+    if (!products || products.length === 0) return; // Prevent crash if no products
     setMounted(true);
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [products.length]);
+  }, [products]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
@@ -56,6 +57,7 @@ const Home: React.FC<Props> = ({ products }) => {
           <Typography variant="h6">Loading...</Typography>
         )}
       </Box>
+      
       <h1>Featured Products</h1>
 
       <Grid container spacing={3} justifyContent="center">
@@ -78,7 +80,7 @@ const Home: React.FC<Props> = ({ products }) => {
   );
 };
 
-// 🔥 FIX: Add a timeout to prevent Vercel function timeout
+// 🔥 FIX: Add timeout & better error handling to prevent function timeout
 export async function getServerSideProps() {
   try {
     const controller = new AbortController();
