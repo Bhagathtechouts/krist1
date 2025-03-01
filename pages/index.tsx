@@ -18,6 +18,7 @@ const Home: React.FC<Props> = ({ products }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    if (products.length === 0) return; // Prevent crash if no products
     setMounted(true);
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
@@ -37,7 +38,7 @@ const Home: React.FC<Props> = ({ products }) => {
   return (
     <Box className="home-container">
       <Box className="carousel-container">
-        {mounted ? (
+        {mounted && products.length > 0 ? (
           <Box className="carousel-wrapper">
             <Box className="carousel-content">
               <img className="carousel-image" src={products[currentIndex].image} alt={products[currentIndex].title} />
@@ -47,12 +48,8 @@ const Home: React.FC<Props> = ({ products }) => {
               </Box>
             </Box>
             <Box className="carousel-controls">
-              <Button onClick={prevSlide} className="carousel-arrow">
-                ➡️
-              </Button>
-              <Button onClick={nextSlide} className="carousel-arrow">
-                ⬅️
-              </Button>
+              <Button onClick={prevSlide} className="carousel-arrow">⬅️</Button>
+              <Button onClick={nextSlide} className="carousel-arrow">➡️</Button>
             </Box>
           </Box>
         ) : (
@@ -81,9 +78,19 @@ const Home: React.FC<Props> = ({ products }) => {
   );
 };
 
+// 🔥 FIX: Add a timeout to prevent Vercel function timeout
 export async function getServerSideProps() {
   try {
-    const res = await fetch("https://fakestoreapi.com/products");
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 seconds max timeout
+
+    const res = await fetch("https://fakestoreapi.com/products", { signal: controller.signal });
+    clearTimeout(timeoutId);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch products");
+    }
+
     const data = await res.json();
     return {
       props: {

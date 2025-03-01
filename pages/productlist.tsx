@@ -23,12 +23,12 @@ const ProductList = ({ products }: ProductListProps) => {
   const [cart, setCart] = useState<Product[]>([]);
 
   const handleLike = (id: number, event: React.MouseEvent) => {
-    event.stopPropagation(); // Prevent card click
+    event.stopPropagation(); 
     setLiked((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleAddToCart = (product: Product, event: React.MouseEvent) => {
-    event.stopPropagation(); // Prevent navigation
+    event.stopPropagation(); 
     setCart((prev) => [...prev, product]);
     alert(`${product.title} added to cart!`);
   };
@@ -76,7 +76,6 @@ const ProductList = ({ products }: ProductListProps) => {
 
 export default ProductList;
 
-// Fetch product data from API
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const products: Product[] = await res.json();

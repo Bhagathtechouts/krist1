@@ -87,13 +87,13 @@ text-decoration: none;
     padding: 5px 10px;
   }
   .link {
-    color: black !important;  /* Ensures black color */
-    text-decoration: none !important; /* Removes underline */
-    font-weight: 500; /* Optional: Adds better visibility */
+    color: black !important; 
+    text-decoration: none !important;
+    font-weight: 500; 
   }
   
   .link:hover {
-    color: #555; /* Optional: Slightly darkens on hover */
+    color: #555;
   }
   
   

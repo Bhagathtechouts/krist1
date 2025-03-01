@@ -1,6 +1,6 @@
 import { Box, Typography, Grid, TextField, Button, IconButton } from "@mui/material";
 import { Facebook, Twitter, Email, LocationOn, Phone, Send } from "@mui/icons-material";
-import styles from "../../styles/Footer.module.css"; // Import external CSS
+import styles from "../../styles/Footer.module.css";
 
 const Footer = () => {
   return (
